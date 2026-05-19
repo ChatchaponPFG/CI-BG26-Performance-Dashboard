@@ -43,7 +43,7 @@
     padding:12px;
     border:none;
     border-radius:8px;
-    background:#2D0083;  /* 🔥 your new color */
+    background:#2D0083;
     color:white;
     cursor:pointer;
     font-weight:500;
@@ -68,7 +68,6 @@ body{
     min-height:100vh;
     background: url("Background.jpg") no-repeat center center;
     background-size: cover;
-
     color:white;
 }
 
@@ -79,49 +78,43 @@ body{
     justify-content:space-between;
     align-items:center;
     padding:18px 40px;
-
     background: linear-gradient(90deg, rgba(6,26,126,0.7), rgba(6,0,46,0.6));
-	backdrop-filter: blur(20px);
-
+    backdrop-filter: blur(20px);
     border-bottom:1px solid rgba(255,255,255,0.1);
     box-shadow: 0 4px 20px rgba(0,0,0,0.3);
 }
 
-/* LEFT SIDE INLINE */
 .header-left{
     display:flex;
     align-items:center;
     gap:15px;
-    min-width:0; /* prevents breaking */
+    min-width:0;
 }
 
-/* LOGO */
 .logo{
     height:42px;
     width:auto;
     display:block;
 }
 
-/* TITLE */
 .header-title{
     font-size:20px;
     font-weight:600;
-    white-space:nowrap; /* 🔥 prevent line break */
+    white-space:nowrap;
 }
+
 .version{
     font-size: 12px;
     font-weight: 400;
     opacity: 0.8;
 }
 
-/* RIGHT SIDE NAV */
 .nav-bar{
     display:flex;
     gap:12px;
     margin-left:auto;
 }
 
-/* NAV BUTTON */
 .nav-item{
     padding:8px 18px;
     border-radius:10px;
@@ -143,7 +136,7 @@ body{
 
 .dashboard-container{
     width:100%;
-    max-width:1200px;   /* 🔥 key line */
+    max-width:1200px;
     margin: 10px auto;
     padding:0 20px;
 }
@@ -158,6 +151,7 @@ body{
     backdrop-filter: blur(14px);
     border: 1px solid rgba(255,255,255,0.12);
 }
+
 .dashboard-card:hover{
     transform: translateY(-4px);
     box-shadow: 0 15px 40px rgba(0,0,0,0.45);
@@ -179,32 +173,145 @@ body{
     border:none;
 }
 
-/* DOWNLOAD */
+/* ================================
+   YEAR ACCORDION STYLES
+================================ */
 
-.download-list{
-    display:flex;
-    flex-direction:column;
-    gap:15px;
-    margin-top:20px;
-    align-items:flex-start;
+.download-section-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 0 20px 0;
 }
 
-.download-btn{
-    display:inline-block;
-    padding:14px 20px;
-    border-radius:10px;
-    text-decoration:none;
-    color:white;
-    background:linear-gradient(90deg,#2D0083,#06002E);
-    width:320px;
-    text-align:left;
-    transition:0.3s;
-    font-weight:500;
+.year-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
-.download-btn:hover{
-    transform:translateY(-2px);
-    box-shadow:0 5px 15px rgba(0,0,0,0.3);
+.year-group {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.06);
+}
+
+.year-toggle {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 22px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    transition: background 0.2s;
+}
+
+.year-toggle:hover {
+    background: rgba(255,255,255,0.08);
+}
+
+.year-toggle-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.year-icon {
+    font-size: 20px;
+}
+
+.year-toggle-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.file-count-badge {
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.6);
+    background: rgba(255,255,255,0.1);
+    padding: 3px 10px;
+    border-radius: 20px;
+}
+
+.chevron {
+    font-size: 18px;
+    transition: transform 0.25s;
+    color: rgba(255,255,255,0.7);
+}
+
+.year-group.open .chevron {
+    transform: rotate(180deg);
+}
+
+/* FILE LIST */
+
+.file-list {
+    display: none;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding: 10px 0;
+}
+
+.year-group.open .file-list {
+    display: block;
+}
+
+.file-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 22px;
+    text-decoration: none;
+    color: rgba(255,255,255,0.85);
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    transition: background 0.15s;
+    border-radius: 0;
+}
+
+.file-link:hover {
+    background: rgba(255,255,255,0.08);
+    color: white;
+}
+
+.file-link:hover .file-arrow {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.file-emoji {
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+.file-name {
+    flex: 1;
+}
+
+.file-arrow {
+    font-size: 14px;
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: all 0.2s;
+    color: rgba(255,255,255,0.5);
+}
+
+/* FY badge */
+.fy-badge {
+    font-size: 11px;
+    font-weight: 600;
+    color: #a78bfa;
+    background: rgba(167,139,250,0.15);
+    padding: 2px 8px;
+    border-radius: 20px;
+    border: 1px solid rgba(167,139,250,0.3);
 }
 
 /* =========================
@@ -213,7 +320,6 @@ body{
 
 @media (max-width: 768px){
 
-    /* HEADER STACK */
     .header{
         flex-direction:column;
         align-items:flex-start;
@@ -228,10 +334,9 @@ body{
 
     .header-title{
         font-size:16px;
-        white-space:normal; /* allow wrap */
+        white-space:normal;
     }
 
-    /* NAV BAR */
     .nav-bar{
         width:100%;
         overflow-x:auto;
@@ -244,61 +349,45 @@ body{
         font-size:13px;
     }
 
-    /* CONTAINER */
     .dashboard-container{
         width:95%;
         margin:15px auto;
     }
 
-    /* CARD */
     .dashboard-card{
         padding:15px;
     }
 
-    /* POWER BI (important fix) */
     .powerbi-wrapper{
-        aspect-ratio: 16 / 10; /* taller for mobile */
+        aspect-ratio: 16 / 10;
     }
 
-    /* DOWNLOAD BUTTON */
-    .download-btn{
-        width:100%;
-        font-size:14px;
-    }
-
-    /* LOGIN BOX */
     .login-box{
         width:90%;
         padding:20px;
     }
 }
-    
+
 </style>
 </head>
 
 <script>
 
-const SESSION_LIMIT = 30 * 60 * 1000; // 30 minutes (adjust here)
+const SESSION_LIMIT = 30 * 60 * 1000;
 
-// Run when page loads
 document.addEventListener("DOMContentLoaded", function(){
 
     const isLoggedIn = localStorage.getItem("loggedIn");
     const loginTime = localStorage.getItem("loginTime");
 
     if(isLoggedIn === "true" && loginTime){
-
         const now = new Date().getTime();
-
         if(now - loginTime < SESSION_LIMIT){
-            // ✅ still valid session
             document.getElementById("login-page").style.display = "none";
             document.getElementById("main-content").style.display = "block";
         }else{
-            // ⛔ session expired
             logout();
         }
-
     }else{
         document.getElementById("login-page").style.display = "flex";
         document.getElementById("main-content").style.display = "none";
@@ -306,14 +395,11 @@ document.addEventListener("DOMContentLoaded", function(){
 
 });
 
-// LOGIN
 function checkLogin(){
     const password = document.getElementById("password").value;
-
     if(password === "pfg12345"){
         localStorage.setItem("loggedIn", "true");
-        localStorage.setItem("loginTime", new Date().getTime()); // ⏱ save time
-
+        localStorage.setItem("loginTime", new Date().getTime());
         document.getElementById("login-page").style.display = "none";
         document.getElementById("main-content").style.display = "block";
     }else{
@@ -321,12 +407,15 @@ function checkLogin(){
     }
 }
 
-// LOGOUT
 function logout(){
     localStorage.removeItem("loggedIn");
     localStorage.removeItem("loginTime");
-
     location.reload();
+}
+
+function toggleYear(id){
+    const group = document.getElementById(id);
+    group.classList.toggle('open');
 }
 
 </script>
@@ -345,12 +434,9 @@ function logout(){
 <div id="main-content" style="display:none;">
 
 <!-- HEADER -->
-
 <div class="header">
-
-    <!-- LEFT SIDE (logo + title inline) -->
     <div class="header-left">
-        <img class="logo" src="data:image/png;base64,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">
+        <img class="logo" src="data:image/png;base64,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">
 
         <div class="header-title">
             PFG Business Intelligence Dashboard: Product Lifecycle & Performance 2026
@@ -358,169 +444,198 @@ function logout(){
         </div>
     </div>
 
-    <!-- RIGHT SIDE (nav) -->
     <div class="nav-bar">
         <div class="nav-item active" onclick="showSection('dashboard', this)">Dashboard</div>
         <div class="nav-item" onclick="showSection('download', this)">File Download</div>
         <div class="nav-item" onclick="logout()">Logout</div>
     </div>
-
 </div>
 
 <!-- CONTENT -->
-
 <div class="dashboard-container">
 
     <!-- DASHBOARD -->
     <div id="dashboard-section">
-
         <div class="dashboard-card">
             <div class="powerbi-wrapper">
-                <iframe title="PFG - Prototype New" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiYzU2ZmI5MjItNmQwOC00ZWJiLWEwZjEtODhkYmQ3NTcyODU2IiwidCI6IjIyZTY1OThjLWMzMmMtNDgxMC1iMGQ5LTA2NjE4ZTJhZThiMSIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe>
+                <iframe title="PFG - Prototype New" width="600" height="373.5"
+                    src="https://app.powerbi.com/view?r=eyJrIjoiYzU2ZmI5MjItNmQwOC00ZWJiLWEwZjEtODhkYmQ3NTcyODU2IiwidCI6IjIyZTY1OThjLWMzMmMtNDgxMC1iMGQ5LTA2NjE4ZTJhZThiMSIsImMiOjEwfQ%3D%3D"
+                    frameborder="0" allowFullScreen="true"></iframe>
             </div>
         </div>
-
     </div>
 
     <!-- DOWNLOAD -->
     <div id="download-section" style="display:none;">
-
         <div class="dashboard-card">
 
-            <h2>Download Data Files</h2>
+            <h2 class="download-section-title">Download Data Files</h2>
 
-            <div class="download-list">
+            <div class="year-accordion">
 
-            <a href="https://docs.google.com/spreadsheets/d/1cH9q8ysvFPDhcMJkn_38OWfPg4KPc6fS/edit?usp=sharing" 
-   target="_blank" 
-   class="download-btn">
-   📊 2024 FY File
-</a>
-			 <a href="https://docs.google.com/spreadsheets/d/1P5k8mmz-AEn8Sn5VmEqeHOWljhR-jLof/edit?usp=sharing" 
-   target="_blank"
-   class="download-btn">
-   📊 2025 (YTD - Jan) File
-</a>
+                <!-- ===== 2026 ===== -->
+                <div class="year-group" id="group-2026">
+                    <button class="year-toggle" onclick="toggleYear('group-2026')">
+                        <span class="year-toggle-left">
+                            <span class="year-icon">📅</span>
+                            2026
+                        </span>
+                        <span class="year-toggle-right">
+                            <span class="file-count-badge">5 files</span>
+                            <span class="chevron">▼</span>
+                        </span>
+                    </button>
+                    <div class="file-list">
+                        <a class="file-link" href="https://docs.google.com/spreadsheets/d/1NgcJaezbRyfJx2_IJNAdo6DQcg7dW_tW/edit?usp=sharing" target="_blank">
+                            <span class="file-emoji">📊</span>
+                            <span class="file-name">2026 (YTD - Jan)</span>
+                            <span class="file-arrow">↗</span>
+                        </a>
+                        <a class="file-link" href="https://docs.google.com/spreadsheets/d/13QNLGm8SQZW8eD2hagDF1qOUXlej3IVD/edit?usp=sharing" target="_blank">
+                            <span class="file-emoji">📊</span>
+                            <span class="file-name">2026 (YTD - Feb)</span>
+                            <span class="file-arrow">↗</span>
+                        </a>
+                        <a class="file-link" href="https://docs.google.com/spreadsheets/d/1_LWqdJH5LtZCEk6Za3s8D0M17EEJyC5Q/edit?usp=sharing" target="_blank">
+                            <span class="file-emoji">📊</span>
+                            <span class="file-name">2026 (YTD - Mar)</span>
+                            <span class="file-arrow">↗</span>
+                        </a>
+                        <a class="file-link" href="https://docs.google.com/spreadsheets/d/1cx7cXyopMCtWqkZpQ_WMOm_aV6rOoMIP/edit?usp=sharing" target="_blank">
+                            <span class="file-emoji">📊</span>
+                            <span class="file-name">2026 (YTD - Apr)</span>
+                            <span class="file-arrow">↗</span>
+                        </a>
+                        <a class="file-link" href="https://docs.google.com/spreadsheets/d/1_967oe6FpyDpAZKRG-gmiz4Ybea3GuLM/edit?usp=sharing" target="_blank">
+                            <span class="file-emoji">📊</span>
+                            <span class="file-name">2026 (FY Forecast)</span>
+                            <span class="fy-badge">FY Forecast</span>
+                            <span class="file-arrow">↗</span>
+                        </a>
+                    </div>
+                </div>
 
-            <a href="https://docs.google.com/spreadsheets/d/1AEbcoPHPFGrRVLKWYVZ-MZ0uX3dYOGqA/edit?usp=sharing" 
-   target="_blank" 
-   class="download-btn">
-   📊 2025 (YTD - Feb) File
-</a>
+                <!-- ===== 2025 ===== -->
+                <div class="year-group" id="group-2025">
+                    <button class="year-toggle" onclick="toggleYear('group-2025')">
+                        <span class="year-toggle-left">
+                            <span class="year-icon">📅</span>
+                            2025
+                        </span>
+                        <span class="year-toggle-right">
+                            <span class="file-count-badge">12 files</span>
+                            <span class="chevron">▼</span>
+                        </span>
+                    </button>
+                    <div class="file-list">
+                        <a class="file-link" href="https://docs.google.com/spreadsheets/d/1P5k8mmz-AEn8Sn5VmEqeHOWljhR-jLof/edit?usp=sharing" target="_blank">
+                            <span class="file-emoji">📊</span>
+                            <span class="file-name">2025 (YTD - Jan)</span>
+                            <span class="file-arrow">↗</span>
+                        </a>
+                        <a class="file-link" href="https://docs.google.com/spreadsheets/d/1AEbcoPHPFGrRVLKWYVZ-MZ0uX3dYOGqA/edit?usp=sharing" target="_blank">
+                            <span class="file-emoji">📊</span>
+                            <span class="file-name">2025 (YTD - Feb)</span>
+                            <span class="file-arrow">↗</span>
+                        </a>
+                        <a class="file-link" href="https://docs.google.com/spreadsheets/d/1Ngsipb4B2DqBgHMrbXFKpRcDrfv0Pvdb/edit?usp=sharing" target="_blank">
+                            <span class="file-emoji">📊</span>
+                            <span class="file-name">2025 (YTD - Mar)</span>
+                            <span class="file-arrow">↗</span>
+                        </a>
+                        <a class="file-link" href="https://docs.google.com/spreadsheets/d/1dIeswcOrE0mK2Soc0_B33VBCW2zvI_G-/edit?usp=sharing" target="_blank">
+                            <span class="file-emoji">📊</span>
+                            <span class="file-name">2025 (YTD - Apr)</span>
+                            <span class="file-arrow">↗</span>
+                        </a>
+                        <a class="file-link" href="https://docs.google.com/spreadsheets/d/14uf0l2vQBDIZW3oLdQj3CpUAukJAemQ9/edit?usp=sharing" target="_blank">
+                            <span class="file-emoji">📊</span>
+                            <span class="file-name">2025 (YTD - May)</span>
+                            <span class="file-arrow">↗</span>
+                        </a>
+                        <a class="file-link" href="https://docs.google.com/spreadsheets/d/1wwlYf_Ti_q6HflhzACV2oAg-S6skPNTj/edit?usp=sharing" target="_blank">
+                            <span class="file-emoji">📊</span>
+                            <span class="file-name">2025 (YTD - Jun)</span>
+                            <span class="file-arrow">↗</span>
+                        </a>
+                        <a class="file-link" href="https://docs.google.com/spreadsheets/d/1hppC3Z8E-zty6Rqb2jP4FOtywVExmWbI/edit?usp=sharing" target="_blank">
+                            <span class="file-emoji">📊</span>
+                            <span class="file-name">2025 (YTD - Jul)</span>
+                            <span class="file-arrow">↗</span>
+                        </a>
+                        <a class="file-link" href="https://docs.google.com/spreadsheets/d/1_iQU96hfL4U1NKNreoqQiWOVjVOacsMB/edit?usp=sharing" target="_blank">
+                            <span class="file-emoji">📊</span>
+                            <span class="file-name">2025 (YTD - Aug)</span>
+                            <span class="file-arrow">↗</span>
+                        </a>
+                        <a class="file-link" href="https://docs.google.com/spreadsheets/d/1mWd24ryN9uM8UA9qd3FQ9SLdFkTRbIWU/edit?usp=sharing" target="_blank">
+                            <span class="file-emoji">📊</span>
+                            <span class="file-name">2025 (YTD - Sep)</span>
+                            <span class="file-arrow">↗</span>
+                        </a>
+                        <a class="file-link" href="https://docs.google.com/spreadsheets/d/1aAFPngvzjf5ddKGLTpVWZvkQviOBFrbf/edit?usp=sharing" target="_blank">
+                            <span class="file-emoji">📊</span>
+                            <span class="file-name">2025 (YTD - Oct)</span>
+                            <span class="file-arrow">↗</span>
+                        </a>
+                        <a class="file-link" href="https://docs.google.com/spreadsheets/d/1WMHg71qkwmssKc8UgrqiqkjljRpz2pqZ/edit?usp=sharing" target="_blank">
+                            <span class="file-emoji">📊</span>
+                            <span class="file-name">2025 (YTD - Nov)</span>
+                            <span class="file-arrow">↗</span>
+                        </a>
+                        <a class="file-link" href="https://docs.google.com/spreadsheets/d/1HvaVzy_zdvPnxpA6xNdfu8ptGoiI-L4f/edit?usp=sharing" target="_blank">
+                            <span class="file-emoji">📊</span>
+                            <span class="file-name">2025 (FY)</span>
+                            <span class="fy-badge">Full Year</span>
+                            <span class="file-arrow">↗</span>
+                        </a>
+                    </div>
+                </div>
 
-		<a href="https://docs.google.com/spreadsheets/d/1Ngsipb4B2DqBgHMrbXFKpRcDrfv0Pvdb/edit?usp=sharing" 
-   target="_blank"
-   class="download-btn">
-   📊 2025 (YTD - Mar) File
-</a>
-				
-		<a href="https://docs.google.com/spreadsheets/d/1dIeswcOrE0mK2Soc0_B33VBCW2zvI_G-/edit?usp=sharing" 
-   target="_blank"
-   class="download-btn">
-   📊 2025 (YTD - Apr) File
-</a>
+                <!-- ===== 2024 ===== -->
+                <div class="year-group" id="group-2024">
+                    <button class="year-toggle" onclick="toggleYear('group-2024')">
+                        <span class="year-toggle-left">
+                            <span class="year-icon">📅</span>
+                            2024
+                        </span>
+                        <span class="year-toggle-right">
+                            <span class="file-count-badge">1 file</span>
+                            <span class="chevron">▼</span>
+                        </span>
+                    </button>
+                    <div class="file-list">
+                        <a class="file-link" href="https://docs.google.com/spreadsheets/d/1cH9q8ysvFPDhcMJkn_38OWfPg4KPc6fS/edit?usp=sharing" target="_blank">
+                            <span class="file-emoji">📊</span>
+                            <span class="file-name">2024 (FY)</span>
+                            <span class="fy-badge">Full Year</span>
+                            <span class="file-arrow">↗</span>
+                        </a>
+                    </div>
+                </div>
 
-		<a href="https://docs.google.com/spreadsheets/d/14uf0l2vQBDIZW3oLdQj3CpUAukJAemQ9/edit?usp=sharing" 
-   target="_blank"
-   class="download-btn">
-   📊 2025 (YTD - May) File
-</a>
-
-		<a href="https://docs.google.com/spreadsheets/d/1wwlYf_Ti_q6HflhzACV2oAg-S6skPNTj/edit?usp=sharing" 
-   target="_blank"
-   class="download-btn">
-   📊 2025 (YTD - Jun) File
-</a>
-
-				<a href="https://docs.google.com/spreadsheets/d/1hppC3Z8E-zty6Rqb2jP4FOtywVExmWbI/edit?usp=sharing" 
-   target="_blank"
-   class="download-btn">
-   📊 2025 (YTD - Jul) File
-</a>
-
-				<a href="https://docs.google.com/spreadsheets/d/1_iQU96hfL4U1NKNreoqQiWOVjVOacsMB/edit?usp=sharing" 
-   target="_blank"
-   class="download-btn">
-   📊 2025 (YTD - Aug) File
-</a>
-
-				<a href="https://docs.google.com/spreadsheets/d/1mWd24ryN9uM8UA9qd3FQ9SLdFkTRbIWU/edit?usp=sharing" 
-   target="_blank"
-   class="download-btn">
-   📊 2025 (YTD - Sep) File
-</a>
-
-				<a href="https://docs.google.com/spreadsheets/d/1aAFPngvzjf5ddKGLTpVWZvkQviOBFrbf/edit?usp=sharing" 
-   target="_blank"
-   class="download-btn">
-   📊 2025 (YTD - Oct) File
-</a>
-
-				<a href="https://docs.google.com/spreadsheets/d/1WMHg71qkwmssKc8UgrqiqkjljRpz2pqZ/edit?usp=sharing" 
-   target="_blank"
-   class="download-btn">
-   📊 2025 (YTD - Nov) File
-</a>
-				
-            <a href="https://docs.google.com/spreadsheets/d/1HvaVzy_zdvPnxpA6xNdfu8ptGoiI-L4f/edit?usp=sharing" 
-   target="_blank" 
-   class="download-btn">
-   📊 2025 FY File
-</a>
-			<a href="https://docs.google.com/spreadsheets/d/1NgcJaezbRyfJx2_IJNAdo6DQcg7dW_tW/edit?usp=sharing" 
-   target="_blank"
-   class="download-btn">
-   📊 2026 (YTD - Jan) File
-</a>
-
-            <a href="https://docs.google.com/spreadsheets/d/13QNLGm8SQZW8eD2hagDF1qOUXlej3IVD/edit?usp=sharing" 
-   target="_blank" 
-   class="download-btn">
-   📊 2026 (YTD - Feb) File
-</a>
-
-		<a href="https://docs.google.com/spreadsheets/d/1_LWqdJH5LtZCEk6Za3s8D0M17EEJyC5Q/edit?usp=sharing" 
-   target="_blank"
-   class="download-btn">
-   📊 2026 (YTD - Mar) File
-</a>
-
-		<a href="https://docs.google.com/spreadsheets/d/1cx7cXyopMCtWqkZpQ_WMOm_aV6rOoMIP/edit?usp=sharing" 
-   target="_blank"
-   class="download-btn">
-   📊 2026 (YTD - Apr) File
-</a>
-
-             <a href="https://docs.google.com/spreadsheets/d/1_967oe6FpyDpAZKRG-gmiz4Ybea3GuLM/edit?usp=sharing" 
-   target="_blank" 
-   class="download-btn">
-   📊 2026 (FY Forecast) File
-</a>
             </div>
-
         </div>
-
     </div>
 
 </div>
 
 <!-- SCRIPT -->
-
 <script>
-
-
 function showSection(section, element){
-
     document.getElementById('dashboard-section').style.display = 'none';
     document.getElementById('download-section').style.display = 'none';
-
     document.getElementById(section + '-section').style.display = 'block';
-
     document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
     element.classList.add('active');
 }
 
+function toggleYear(id){
+    const group = document.getElementById(id);
+    group.classList.toggle('open');
+}
 </script>
+
 </div>
 </body>
-</html> 
+</html>
