@@ -671,11 +671,12 @@ body::before{
     display:flex;
     align-items:center;
     width:max-content;
-    animation: brand-marquee-scroll 10s linear infinite;
+    animation: brand-marquee-scroll 18s linear infinite;
+    will-change:transform;
 }
 
 .brand-marquee-track img{
-    height:38px;
+    height:46px;
     width:auto;
     margin:0 30px;
     flex-shrink:0;
@@ -683,14 +684,23 @@ body::before{
     filter: drop-shadow(0 2px 6px rgba(0,0,0,0.25));
 }
 
+/* Each set has exactly the same width, so the reset is invisible */
+.brand-marquee-set{
+    display:flex;
+    align-items:center;
+    flex-shrink:0;
+}
+
 @keyframes brand-marquee-scroll{
-    0%   { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    from { transform: translate3d(0,0,0); }
+    to   { transform: translate3d(-50%,0,0); }
+}
+    to   { transform: translate3d(calc(-1 * var(--brand-marquee-distance, 0px)),0,0); }
 }
 
 @media (max-width: 768px){
     .brand-marquee-track img{
-        height:28px;
+        height:34px;
         margin:0 18px;
     }
 }
@@ -760,6 +770,16 @@ function toggleYear(id){
     group.classList.toggle('open');
 }
 
+<script>
+
+// Robust infinite marquee: measure one complete logo set in pixels and
+// move exactly that distance. This prevents visible jumps at browser zoom levels.
+document.addEventListener("DOMContentLoaded", function(){
+    const track = document.querySelector(".brand-marquee-track");
+    const firstSet = track ? track.querySelector(".brand-marquee-set") : null;
+    if(!track || !firstSet) return;
+);
+
 </script>
 
 <body>
@@ -823,30 +843,33 @@ function toggleYear(id){
 
         <div class="brand-marquee-wrap">
             <div class="brand-marquee-track">
-                <img src="https://www.patayafood.com/th/assets/images/our-brands-logo/logo-brand01_th.png" alt="">
-                <img src="https://www.patayafood.com/th/assets/images/our-brands-logo/logo-brand02_th.png" alt="">
-                <img src="https://www.patayafood.com/th/assets/images/our-brands-logo/logo-brand07.png" alt="">
-                <img src="https://www.patayafood.com/th/assets/images/our-brands-logo/logo-brand03_th.png" alt="">
-                <img src="https://www.patayafood.com/th/assets/images/our-brands-logo/logo-brand04_th.png" alt="">
-                <img src="https://www.patayafood.com/th/assets/images/our-brands-logo/logo-brand06_th.png" alt="">
-                <img src="https://www.patayafood.com/th/assets/images/our-brands-logo/logo-brand08_th.png" alt="">
-                <img src="https://www.patayafood.com/th/assets/images/our-brands-logo/logo-brand05_th.png" alt="">
-                <img src="https://www.patayafood.com/th/assets/images/our-brands-logo/logo-brand09.png" alt="">
-                <!-- duplicate set for seamless loop -->
-                <img src="https://www.patayafood.com/th/assets/images/our-brands-logo/logo-brand01_th.png" alt="">
-                <img src="https://www.patayafood.com/th/assets/images/our-brands-logo/logo-brand02_th.png" alt="">
-                <img src="https://www.patayafood.com/th/assets/images/our-brands-logo/logo-brand07.png" alt="">
-                <img src="https://www.patayafood.com/th/assets/images/our-brands-logo/logo-brand03_th.png" alt="">
-                <img src="https://www.patayafood.com/th/assets/images/our-brands-logo/logo-brand04_th.png" alt="">
-                <img src="https://www.patayafood.com/th/assets/images/our-brands-logo/logo-brand06_th.png" alt="">
-                <img src="https://www.patayafood.com/th/assets/images/our-brands-logo/logo-brand08_th.png" alt="">
-                <img src="https://www.patayafood.com/th/assets/images/our-brands-logo/logo-brand05_th.png" alt="">
-                <img src="https://www.patayafood.com/th/assets/images/our-brands-logo/logo-brand09.png" alt="">
+                <div class="brand-marquee-set">
+                    <img src="https://www.patayafood.com/th/assets/images/our-brands-logo/logo-brand01_th.png" alt="">
+                    <img src="https://www.patayafood.com/th/assets/images/our-brands-logo/logo-brand02_th.png" alt="">
+                    <img src="https://www.patayafood.com/th/assets/images/our-brands-logo/logo-brand07.png" alt="">
+                    <img src="https://www.patayafood.com/th/assets/images/our-brands-logo/logo-brand03_th.png" alt="">
+                    <img src="https://www.patayafood.com/th/assets/images/our-brands-logo/logo-brand04_th.png" alt="">
+                    <img src="https://www.patayafood.com/th/assets/images/our-brands-logo/logo-brand06_th.png" alt="">
+                    <img src="https://www.patayafood.com/th/assets/images/our-brands-logo/logo-brand08_th.png" alt="">
+                    <img src="https://www.patayafood.com/th/assets/images/our-brands-logo/logo-brand05_th.png" alt="">
+                    <img src="https://www.patayafood.com/th/assets/images/our-brands-logo/logo-brand09.png" alt="">
+                </div>
+                <div class="brand-marquee-set" aria-hidden="true">
+                    <img src="https://www.patayafood.com/th/assets/images/our-brands-logo/logo-brand01_th.png" alt="">
+                    <img src="https://www.patayafood.com/th/assets/images/our-brands-logo/logo-brand02_th.png" alt="">
+                    <img src="https://www.patayafood.com/th/assets/images/our-brands-logo/logo-brand07.png" alt="">
+                    <img src="https://www.patayafood.com/th/assets/images/our-brands-logo/logo-brand03_th.png" alt="">
+                    <img src="https://www.patayafood.com/th/assets/images/our-brands-logo/logo-brand04_th.png" alt="">
+                    <img src="https://www.patayafood.com/th/assets/images/our-brands-logo/logo-brand06_th.png" alt="">
+                    <img src="https://www.patayafood.com/th/assets/images/our-brands-logo/logo-brand08_th.png" alt="">
+                    <img src="https://www.patayafood.com/th/assets/images/our-brands-logo/logo-brand05_th.png" alt="">
+                    <img src="https://www.patayafood.com/th/assets/images/our-brands-logo/logo-brand09.png" alt="">
+                </div>
             </div>
         </div>
 
         <div class="landing-footer">
-            <span>Powered by Consumer & Marketing Insight Department (CMI)</span>
+            <span>Powered by Consumer & Market Insight Department (CMI)</span>
         </div>
     </div>
 </div>
