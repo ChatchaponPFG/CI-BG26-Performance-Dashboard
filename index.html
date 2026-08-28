@@ -651,6 +651,50 @@ body::before{
     }
 }
 
+
+/* =========================
+   BRAND LOGO MARQUEE
+========================= */
+
+.brand-marquee-wrap{
+    position:relative;
+    z-index:2;
+    width:100%;
+    overflow:hidden;
+    padding:16px 0;
+    margin-top:6px;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
+}
+
+.brand-marquee-track{
+    display:flex;
+    align-items:center;
+    width:max-content;
+    animation: brand-marquee-scroll 10s linear infinite;
+}
+
+.brand-marquee-track img{
+    height:38px;
+    width:auto;
+    margin:0 30px;
+    flex-shrink:0;
+    opacity:0.9;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.25));
+}
+
+@keyframes brand-marquee-scroll{
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+@media (max-width: 768px){
+    .brand-marquee-track img{
+        height:28px;
+        margin:0 18px;
+    }
+}
+
 </style>
 </head>
 
@@ -774,6 +818,30 @@ function toggleYear(id){
                 <input type="password" id="password" placeholder="Enter password">
                 <button onclick="checkLogin()">Login</button>
                 <p id="error-msg"></p>
+            </div>
+        </div>
+
+        <div class="brand-marquee-wrap">
+            <div class="brand-marquee-track">
+                <img src="https://www.patayafood.com/th/assets/images/our-brands-logo/logo-brand01_th.png" alt="">
+                <img src="https://www.patayafood.com/th/assets/images/our-brands-logo/logo-brand02_th.png" alt="">
+                <img src="https://www.patayafood.com/th/assets/images/our-brands-logo/logo-brand07.png" alt="">
+                <img src="https://www.patayafood.com/th/assets/images/our-brands-logo/logo-brand03_th.png" alt="">
+                <img src="https://www.patayafood.com/th/assets/images/our-brands-logo/logo-brand04_th.png" alt="">
+                <img src="https://www.patayafood.com/th/assets/images/our-brands-logo/logo-brand06_th.png" alt="">
+                <img src="https://www.patayafood.com/th/assets/images/our-brands-logo/logo-brand08_th.png" alt="">
+                <img src="https://www.patayafood.com/th/assets/images/our-brands-logo/logo-brand05_th.png" alt="">
+                <img src="https://www.patayafood.com/th/assets/images/our-brands-logo/logo-brand09.png" alt="">
+                <!-- duplicate set for seamless loop -->
+                <img src="https://www.patayafood.com/th/assets/images/our-brands-logo/logo-brand01_th.png" alt="">
+                <img src="https://www.patayafood.com/th/assets/images/our-brands-logo/logo-brand02_th.png" alt="">
+                <img src="https://www.patayafood.com/th/assets/images/our-brands-logo/logo-brand07.png" alt="">
+                <img src="https://www.patayafood.com/th/assets/images/our-brands-logo/logo-brand03_th.png" alt="">
+                <img src="https://www.patayafood.com/th/assets/images/our-brands-logo/logo-brand04_th.png" alt="">
+                <img src="https://www.patayafood.com/th/assets/images/our-brands-logo/logo-brand06_th.png" alt="">
+                <img src="https://www.patayafood.com/th/assets/images/our-brands-logo/logo-brand08_th.png" alt="">
+                <img src="https://www.patayafood.com/th/assets/images/our-brands-logo/logo-brand05_th.png" alt="">
+                <img src="https://www.patayafood.com/th/assets/images/our-brands-logo/logo-brand09.png" alt="">
             </div>
         </div>
 
